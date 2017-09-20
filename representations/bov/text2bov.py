@@ -94,7 +94,7 @@ def natural(v):
 #More info: https://code.google.com/archive/p/word2vec/
 
 #Defining script arguments: 
-parser = argparse.ArgumentParser(description="Create a Bag of Vectors based on W2V model (text vectors).")
+parser = argparse.ArgumentParser(description="Create a Bag of Vectors based in a W2V model (text vectors).")
 parser.add_argument("--log", metavar='BOOL', type=str2bool, action="store", dest="log", nargs="?", const=True, default=False, required=False, help='display log during the process - def. False')
 parser.add_argument("--n_gram", metavar='NUM', type=natural, action="store", dest="n_gram", default=1, nargs="?", const=True, required=False, help='specify N-gram - def. 1')
 parser.add_argument("--model", "-m", metavar='PATH', type=str, action="store", dest="model", required=True, nargs="?", const=True, help='input file_output of model (Word2Vec text vectors)')
