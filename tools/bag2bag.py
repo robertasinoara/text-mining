@@ -99,11 +99,11 @@ def percentage(v):
 # python3 bag2bag.py --input output/txt/ --output output/txt/
 
 #Defining script arguments: 
-parser = argparse.ArgumentParser(description="Convert a Bag of ? (Bo?) 'cat-pol' to Bag of ? 'cat' and 'pol'.")
+parser = argparse.ArgumentParser(description="Convert a Doc-Term 'cat-pol' to Doc-Term 'cat' and 'pol'.")
 parser.add_argument("--log", metavar='BOOL', type=str2bool, action="store", dest="log", nargs="?", const=True, default=False, required=False, help='display log during the process - def. False')
 parser.add_argument("--split", metavar='PATH', type=str, action="store", dest="split", required=True, nargs="?", const=True, help='special "token" to split classes')
-parser.add_argument("--input", "-i", metavar='PATH', type=str, action="store", dest="input", required=True, nargs="?", const=True, help='input directory of Bo? files')
-parser.add_argument("--output", "-o", metavar='PATH', type=str, action="store", dest="output", required=True, nargs="?", const=True, help='output directory to save Bo? files')
+parser.add_argument("--input", "-i", metavar='PATH', type=str, action="store", dest="input", required=True, nargs="?", const=True, help='input directory of Doc-Term files')
+parser.add_argument("--output", "-o", metavar='PATH', type=str, action="store", dest="output", required=True, nargs="?", const=True, help='output directory to save Doc-Term files')
 args = parser.parse_args()    #Verifying arguments.
 
 #Setup logging:
