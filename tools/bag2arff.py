@@ -99,7 +99,7 @@ def percentage(v):
 ################################################################################
 
 #Run:
-# python bag2arff.py --weka weka.jar --input output/txt/ --output output/arff/
+# python3 bag2arff.py --weka weka.jar --input output/txt/ --output output/arff/
 
 #Defining script arguments: 
 parser = argparse.ArgumentParser(description="Convert a Doc-Term matrix to ARFF (Weka file).")
