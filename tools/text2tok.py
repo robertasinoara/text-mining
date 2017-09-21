@@ -116,7 +116,7 @@ babelfy_requests = 0
 
 ################################################################################
 
-log = codecs.open("text2token-log_" + str( int(time.time()) ) + ".txt", "w", "utf-8")
+log = codecs.open("text2tok-log_" + str( int(time.time()) ) + ".txt", "w", "utf-8")
 print("> Removing empty lines:")
 print("..................................................")
 log.write("> Raw texts: " + args.input + "\n")
