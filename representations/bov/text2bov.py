@@ -164,14 +164,14 @@ for dim in range(1, model_dim+1):
 header += "class_atr\n"
 print("> TASK 1 - N-GRAM VARIATION / TASK 2 - TEXT REPRESENTATION:")
 print("..................................................")
-total_operations = args.n_gram
+total_operations = args.n_gram*total_num_examples
 filepath_i = 0
 eta = 0
-print_progress(filepath_i, total_num_examples, eta)
+print_progress(filepath_i, total_operations, eta)
 operation_start = time.time()
 
-for i in range(1, args.n_gram+1):
-    out_file = open(out_string + str(i), "w")
+for n in range(1, args.n_gram+1):
+    out_file = open(out_string + str(n), "w")
     out_file.write(header)    
     start = time.time()
     
@@ -180,7 +180,7 @@ for i in range(1, args.n_gram+1):
         file_output = codecs.open(file_item, "r", "UTF-8")
         doc_vector = [0]*model_dim
         vectors_found = 0
-        n_grams = list( nltk.everygrams(nltk.tokenize.word_tokenize(file_output.read().strip()), max_len=i) )
+        n_grams = list( nltk.everygrams(file_output.read().strip().split(" "), max_len=n) )
         
         for ng in n_grams:
             words.append("_".join(ng))
@@ -199,16 +199,16 @@ for i in range(1, args.n_gram+1):
             doc_vector = [x / vectors_found for x in doc_vector]
             
         out_file.write( "\t".join(str(e) for e in doc_vector) + "\t" + class_atr + "\n" )
+        filepath_i += 1
+        end = time.time()
+        eta = (total_operations-filepath_i)*(end-start)
+        print_progress(filepath_i, total_operations, eta)
             
     out_file.close()
-    filepath_i += 1
-    end = time.time()
-    eta = (total_num_examples-filepath_i)*(end-start)
-    print_progress(filepath_i, total_num_examples, eta)
     
 operation_end = time.time()
 eta = operation_end-operation_start
-print_progress(total_num_examples, total_num_examples, eta, final=True)    
+print_progress(total_operations, total_operations, eta, final=True)    
 print("..................................................\n")
     
 ################################################################################    
