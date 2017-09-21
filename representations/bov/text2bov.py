@@ -173,9 +173,9 @@ operation_start = time.time()
 for n in range(1, args.n_gram+1):
     out_file = open(out_string + str(n), "w")
     out_file.write(header)    
-    start = time.time()
     
     for file_item in files_list:
+        start = time.time()
         words = []
         file_input = codecs.open(file_item, "r", "UTF-8")
         doc_vector = [0]*model_dim
