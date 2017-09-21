@@ -96,7 +96,7 @@ def percentage(v):
 ################################################################################
 
 #Run:
-# python3 bag2bag.py --input output/txt/ --output output/txt/
+#python3 bag2bag.py --input output/bov/txt/ --output output/bov/txt/
 
 #Defining script arguments: 
 parser = argparse.ArgumentParser(description="Convert a Doc-Term 'cat-pol' to Doc-Term 'cat' and 'pol'.")
