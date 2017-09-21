@@ -88,7 +88,7 @@ def natural(v):
 ################################################################################
 
 #Run:
-#python3 text2bov.py --n_gram 1 --model models/Google/GoogleVectors_300.txt --input input/dataset/tokenized/ --output output/bov/txt/
+#python3 text2bov.py --model models/Google/GoogleVectors_300.txt --input input/dataset/ --output output/bov/
 
 #Pre-trained word and phrase vectors (Google): https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit?usp=sharing
 #More info: https://code.google.com/archive/p/word2vec/
@@ -97,7 +97,7 @@ def natural(v):
 parser = argparse.ArgumentParser(description="Create a Bag of Vectors based in a W2V model (text vectors).")
 parser.add_argument("--log", metavar='BOOL', type=str2bool, action="store", dest="log", nargs="?", const=True, default=False, required=False, help='display log during the process - def. False')
 parser.add_argument("--n_gram", metavar='NUM', type=natural, action="store", dest="n_gram", default=1, nargs="?", const=True, required=False, help='specify N-gram - def. 1')
-parser.add_argument("--model", "-m", metavar='PATH', type=str, action="store", dest="model", required=True, nargs="?", const=True, help='input file_output of model (Word2Vec text vectors)')
+parser.add_argument("--model", "-m", metavar='PATH', type=str, action="store", dest="model", required=True, nargs="?", const=True, help='input file_input of model (Word2Vec text vectors)')
 parser.add_argument("--input", "-i", metavar='PATH', type=str, action="store", dest="input", required=True, nargs="?", const=True, help='input directory of files to test')
 parser.add_argument("--output", "-o", metavar='PATH', type=str, action="store", dest="output", required=True, nargs="?", const=True, help='output directory to save the BoV')
 args = parser.parse_args()    #Verifying arguments.
@@ -177,15 +177,15 @@ for n in range(1, args.n_gram+1):
     
     for file_item in files_list:
         words = []
-        file_output = codecs.open(file_item, "r", "UTF-8")
+        file_input = codecs.open(file_item, "r", "UTF-8")
         doc_vector = [0]*model_dim
         vectors_found = 0
-        n_grams = list( nltk.everygrams(file_output.read().strip().split(" "), max_len=n) )
+        n_grams = list( nltk.everygrams(" ".join( [l.strip() for l in file_input.readlines()] ).split(" "), max_len=n) )
         
         for ng in n_grams:
             words.append("_".join(ng))
             
-        file_output.close()
+        file_input.close()
         class_atr = file_item.split('/')[-2].strip()
         
         #Sum all vectors found:
