@@ -88,7 +88,7 @@ def natural(v):
 ################################################################################
 
 #Run:
-#python3 text2bov.py --model models/Google/GoogleVectors_300.txt --input input/dataset/ --output output/bov/
+#python3 text2bov.py --n_gram 1 --model models/Google/GoogleVectors_300.txt --input input/dataset/tokenized/ --output output/bov/txt/
 
 #Pre-trained word and phrase vectors (Google): https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit?usp=sharing
 #More info: https://code.google.com/archive/p/word2vec/
