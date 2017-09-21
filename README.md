@@ -7,15 +7,15 @@ Bag of Vectors (BoV) is a text representation based in Vector Space Model. More 
 ```
 python3 text2tok.py --input input/dataset/ --output input/dataset/tokenized/
 ```
-> Generating a BoV:
+> Generating the BoVs:
 ```
 python3 text2bov.py --n_gram 1 --model models/Google/GoogleVectors_300.txt --input input/dataset/tokenized/ --output output/bov/txt/
 ```
-> Converting a Doc-Term 'cat-pol' to Doc-Term 'cat' and 'pol':
+> Converting the Doc-Term matrices 'cat-pol' to Doc-Term 'cat' and 'pol':
 ```
 python3 bag2bag.py --input output/bov/txt/ --output output/bov/txt/
 ```
-> Converting a Doc-Term matrix to ARFF (Weka file):
+> Converting the Doc-Term matrices to ARFFs (Weka file):
 ```
 python3 bag2arff.py --weka weka.jar --input output/bov/txt/ --output output/bov/arff/
 ```
